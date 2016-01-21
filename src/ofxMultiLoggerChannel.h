@@ -15,6 +15,8 @@ class ofxMultiLoggerChannel : public ofBaseLoggerChannel
 public:
     ofxMultiLoggerChannel();
     ~ofxMultiLoggerChannel();
+	void addTimestamp(bool add);
+	void setTimestampFormat(const string& format);
 
     void log(ofLogLevel level, const string & module, const string & message);
     void log(ofLogLevel level, const string & module, const char* format, ...) OF_PRINTF_ATTR(4, 5);
@@ -28,4 +30,6 @@ public:
 
 private:
     std::list<std::shared_ptr<ofBaseLoggerChannel>> _channels;
+	string _timestampFormat;
+	bool _bAddTimestamp;
 };

@@ -4,7 +4,8 @@
 ofxMultiLoggerChannel::ofxMultiLoggerChannel()
 : ofBaseLoggerChannel()
 {
-
+	_bAddTimestamp = false;
+	_timestampFormat = "[%Y.%m.%d_%H:%M:%S:%i] ";
 }
 
 //--------------------------------------------------------------
@@ -14,10 +15,22 @@ ofxMultiLoggerChannel::~ofxMultiLoggerChannel()
 }
 
 //--------------------------------------------------------------
+void ofxMultiLoggerChannel::addTimestamp(bool add)
+{
+	_bAddTimestamp = add;
+}
+
+//--------------------------------------------------------------
+void ofxMultiLoggerChannel::setTimestampFormat(const string &format)
+{
+	_timestampFormat = format;
+}
+
+//--------------------------------------------------------------
 void ofxMultiLoggerChannel::log(ofLogLevel level, const string & module, const string & message)
 {
     for (std::shared_ptr<ofBaseLoggerChannel> channel : _channels) {
-        channel->log(level, module, message);
+		channel->log(level, module, (_bAddTimestamp?ofGetTimestampString(_timestampFormat) + message:message));
     }
 }
 
