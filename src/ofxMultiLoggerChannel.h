@@ -23,6 +23,7 @@ public:
     void log(ofLogLevel level, const string & module, const char* format, va_list args);
 
     void addLoggerChannel(std::shared_ptr<ofBaseLoggerChannel> channel);
+	bool channelExists(std::shared_ptr<ofBaseLoggerChannel> channel);
     void removeLoggerChannel(std::shared_ptr<ofBaseLoggerChannel> channel);
 
     std::shared_ptr<ofConsoleLoggerChannel> addConsoleLoggerChannel();

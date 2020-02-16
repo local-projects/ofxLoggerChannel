@@ -11,6 +11,7 @@ ofxMultiLoggerChannel::ofxMultiLoggerChannel()
 //--------------------------------------------------------------
 ofxMultiLoggerChannel::~ofxMultiLoggerChannel()
 {
+	ofLogNotice("ofxMultiLoggerChannel") << "~ofxMultiLoggerChannel()";
     _channels.clear();
 }
 
@@ -61,6 +62,10 @@ void ofxMultiLoggerChannel::addLoggerChannel(std::shared_ptr<ofBaseLoggerChannel
 void ofxMultiLoggerChannel::removeLoggerChannel(std::shared_ptr<ofBaseLoggerChannel> channel)
 {
     _channels.remove(channel);
+}
+
+bool ofxMultiLoggerChannel::channelExists(std::shared_ptr<ofBaseLoggerChannel> channel){
+	return std::find(_channels.begin(), _channels.end(), channel) != _channels.end();
 }
 
 //--------------------------------------------------------------
