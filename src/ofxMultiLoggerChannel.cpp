@@ -11,7 +11,7 @@ ofxMultiLoggerChannel::ofxMultiLoggerChannel()
 //--------------------------------------------------------------
 ofxMultiLoggerChannel::~ofxMultiLoggerChannel()
 {
-	ofLogNotice("ofxMultiLoggerChannel") << "~ofxMultiLoggerChannel()";
+	//ofLogNotice("ofxMultiLoggerChannel") << "~ofxMultiLoggerChannel()";
     _channels.clear();
 }
 
